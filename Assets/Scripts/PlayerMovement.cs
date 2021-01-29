@@ -1,12 +1,11 @@
-//Created 1/29/2020 Michael Aspinall
+//Created 1/29/2021 Michael Aspinall
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //Using a Ridgidbody isn't strictly nessessary, It just makes it easier to hand off collision detection to Unity
-    Rigidbody2D boatRB;
+    
     //setting variables to public makes them visible in the editor, that is where speed gets set
     public float speed;
     //player GameObject also set in editor
@@ -15,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        boatRB = player.GetComponent<Rigidbody2D>();
+       
     }
 
     // Update is called once per frame
@@ -26,7 +25,8 @@ public class PlayerMovement : MonoBehaviour
         //This is just standard, currently does not affect the sprite.
         Vector3 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         movement.Normalize();
-
-        boatRB.velocity = movement * speed;
+        movement *= speed;
+        player.transform.position = new Vector3(player.transform.position.x + movement.x,
+            player.transform.position.y + movement.y, 0.0f);
     }
 }
