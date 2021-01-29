@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 392037607831720073}
   - component: {fileID: 392037607831720072}
   - component: {fileID: 392037607831720087}
+  - component: {fileID: -4840075364232481270}
+  - component: {fileID: -7131883205417743836}
   m_Layer: 0
   m_Name: TestBoat
   m_TagString: Untagged
@@ -104,3 +106,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4840075364232481270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392037607831720086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da929e1ac393c94abc5201a544bb28b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+--- !u!114 &-7131883205417743836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392037607831720086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1287e09708bf7684a8351e1c11244a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buoysHit: 0
+  transmissionsHit: 0

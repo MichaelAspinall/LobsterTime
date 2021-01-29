@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     //setting variables to public makes them visible in the editor, that is where speed gets set
     public float speed;
     //player GameObject also set in editor
-    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         movement.Normalize();
         movement *= speed;
-        player.transform.position = new Vector3(player.transform.position.x + movement.x,
-            player.transform.position.y + movement.y, 0.0f);
+        transform.position = new Vector3(transform.position.x + movement.x,
+            transform.position.y + movement.y, 0.0f);
     }
 }
