@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class RadioMessageScript : MonoBehaviour
 {
+    public GameObject playerMessageTemplate;
+    public GameObject radioMessageTemplate;
 
     
     // Start is called before the first frame update
     void Start()
     {
         AddMessage(true, "TestMessage!");
+        AddMessage(false, "Test Radio Message");
     }
 
     // Update is called once per frame
@@ -21,23 +24,23 @@ public class RadioMessageScript : MonoBehaviour
 
     void AddMessage(bool fromPlayer, string message)
     {
-        GameObject CurrentMessage = new GameObject("message");
-        RectTransform rect = CurrentMessage.AddComponent<RectTransform>();
-        rect.sizeDelta = new Vector2(300.0f, 65.0f);
-        Text currentMessage = this.gameObject.AddComponent<Text>();
-        currentMessage.text = message;
-        CurrentMessage.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
-        Image textBackground = CurrentMessage.AddComponent<Image>();
-        textBackground.color = new Color32(233,209,89,225);
-        
+
+        GameObject newMessage;
+        Vector3 messagePos;
 
         if (fromPlayer)
         {
-            
+            newMessage = Instantiate(playerMessageTemplate, transform.position, transform.rotation);
+            messagePos = new Vector3(0, 0, 0);
         }
         else
         {
-            
+            newMessage = Instantiate(radioMessageTemplate, transform.position, transform.rotation);
+            messagePos = new Vector3(6, 0, 0);
         }
+        newMessage.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform);
+        newMessage.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        newMessage.transform.position = messagePos;
+        newMessage.GetComponentInChildren<Text>().text = message;
     }
 }
