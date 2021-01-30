@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class BuoyScript : MonoBehaviour
 {
-    //public GameObject newBuoy;
+    public GameObject itemToSpawn;
+    public GameObject desinationObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,13 +26,21 @@ public class BuoyScript : MonoBehaviour
         if (player)
         {
             Debug.Log("Buoy Hit");
+            SpawnCollectable();
             Destroy(transform.root.gameObject);
         }
-        //What to do when contact is made with the buoy is handeled in the player script
-        //So we just get rid of the object here
-        if(collision.gameObject.tag == "Player")
+    }
+    private void SpawnCollectable()
+    {
+        GameObject item = GameObject.Instantiate(itemToSpawn, new Vector2(0, 0), Quaternion.identity);
+        Collectable collectable = item.GetComponent<Collectable>();
+        if (!collectable)
         {
-            Destroy(transform.root.gameObject);
+            Debug.LogWarning("Buoy is spawning a non-collectable item");
+        }
+        else
+        {
+            collectable.destinationObject = desinationObject;
         }
     }
 }
