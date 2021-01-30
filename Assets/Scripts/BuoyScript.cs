@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BuoyScript : MonoBehaviour
 {
+    public int buoyNumber;
     public GameObject itemToSpawn;
     public GameObject desinationObject;
 
