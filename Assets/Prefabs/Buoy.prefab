@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8365682550718845434}
   - component: {fileID: 8365682550718845435}
   m_Layer: 0
-  m_Name: TestBuoy
+  m_Name: Buoy
   m_TagString: Buoy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8365682550718845436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.2505074, y: 1.1206002, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8e72a6f37bdeb3d49858e8d8f2accfdd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 844aa2fbb09a13e47b13dd90cd05d7d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,9 +97,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.4561297, y: -1.9942391}
   serializedVersion: 2
-  m_Radius: 1.28
+  m_Radius: 2.9666169
 --- !u!114 &8365682550718845435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,3 +112,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8678a003bc7434b4bb604393b08069a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemToSpawn: {fileID: 0}
+  desinationObject: {fileID: 0}

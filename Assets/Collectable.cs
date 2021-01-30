@@ -7,7 +7,9 @@ public enum MovementState
     IsGrowing,
     HasGrown,
     IsMoving,
-    HasMoved
+    HasMoved,
+    IsClearing,
+    IsCleared
 }
 
 
@@ -25,13 +27,18 @@ public class Collectable : MonoBehaviour
     private float moveTimeElapsed;
     public const float moveDurationSeconds = 0.3f;
 
+    private float clearTimeElapsed;
+    public const float clearDurationSeconds = 0.3f;
+
     private Vector2 startingPosition;
+    private Vector2 clearingScale;
 
     // Start is called before the first frame update
     void Start()
     {
         startingScale = transform.localScale;
         endingScale = transform.localScale * 3;
+        clearingScale = transform.localScale * 0.1f;
         startingPosition = transform.position;
     }
 
@@ -67,13 +74,36 @@ public class Collectable : MonoBehaviour
                 transform.localScale = startingScale;
             }
         }
+
+        if (movementState == MovementState.IsClearing)
+        {
+            if (clearTimeElapsed <= clearDurationSeconds)
+            {
+                transform.localScale = Vector2.Lerp(endingScale, clearingScale, clearTimeElapsed / clearDurationSeconds);
+                clearTimeElapsed += Time.deltaTime;
+            }
+            else
+            {
+                movementState = MovementState.IsCleared;
+                transform.localScale = clearingScale;
+                Destroy(gameObject);
+            }
+        }
+
     }
 
     private void OnMouseDown()
     {
         if (movementState == MovementState.HasGrown)
         {
-            movementState = MovementState.IsMoving;
+            if (destinationObject == null)
+            {
+                movementState = MovementState.IsClearing;
+            }
+            else
+            {
+                movementState = MovementState.IsMoving;
+            }
         }
     }
 }
