@@ -12,7 +12,7 @@ public class BuoyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameManager.Instance.buoys.Add(gameObject);
     }
 
     // Update is called once per frame
@@ -28,6 +28,7 @@ public class BuoyScript : MonoBehaviour
         {
             Debug.Log("Buoy Hit");
             SpawnCollectable();
+            GameManager.Instance.HitBuoy();
             Destroy(transform.root.gameObject);
         }
     }
