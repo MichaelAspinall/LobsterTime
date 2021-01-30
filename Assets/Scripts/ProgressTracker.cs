@@ -22,10 +22,6 @@ public class ProgressTracker : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Buoy")
-        {
-            buoysHit++;
-        }
         if (collision.gameObject.tag == "Transmission")
         {
             transmissionsHit++;

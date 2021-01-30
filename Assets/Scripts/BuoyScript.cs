@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BuoyScript : MonoBehaviour
 {
+    //public GameObject newBuoy;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,11 @@ public class BuoyScript : MonoBehaviour
         //So we just get rid of the object here
         if(collision.gameObject.tag == "Player")
         {
+            //ProgressTracker tracker = collision.gameObject.GetComponent<ProgressTracker>();
+            //if(tracker)
+            //{
+            //    GameObject.Instantiate(newBuoy, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            //}
             Destroy(transform.root.gameObject);
         }
     }
