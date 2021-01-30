@@ -23,8 +23,9 @@ public class GameManager : GenericSingletonClass<GameManager>
         return null;
     }
 
-    public void HitBuoy()
+    public void HitBuoy(GameObject buoy)
     {
         currentBuoy++;
+        buoys.Remove(buoy);
     }
 };

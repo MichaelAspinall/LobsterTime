@@ -44,8 +44,6 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = Mathf.Max(targetSpeed, -maxSpeed);
         }
 
-        Debug.Log("Speed = " + currentSpeed);
-
         transform.Rotate(0.0f, 0.0f, -Input.GetAxis("Horizontal") * turnSpeed);
         if (currentSpeed != 0)
         {

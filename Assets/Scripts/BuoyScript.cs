@@ -28,7 +28,7 @@ public class BuoyScript : MonoBehaviour
         {
             Debug.Log("Buoy Hit");
             SpawnCollectable();
-            GameManager.Instance.HitBuoy();
+            GameManager.Instance.HitBuoy(gameObject);
             Destroy(transform.root.gameObject);
         }
     }
