@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProgressTracker : MonoBehaviour
+public class PlayerState : MonoBehaviour
 {
     public int buoysHit;
     public int transmissionsHit;

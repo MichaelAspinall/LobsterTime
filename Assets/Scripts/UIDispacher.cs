@@ -9,7 +9,7 @@ public class UIDispacher : MonoBehaviour
     //We want to access the progress tracker's data
     //so we grab the player get component
     public GameObject player;
-    ProgressTracker pTracker;
+    PlayerState playerState;
 
     //will compare values for buoys and transmissions to previous frame
     //If I had time I would figure out Unity's event system because this is bad
@@ -22,7 +22,7 @@ public class UIDispacher : MonoBehaviour
     void Start()
     {
         //access the progress tracker
-        pTracker = player.GetComponent <ProgressTracker> ();
+        playerState = player.GetComponent <PlayerState> ();
 
         oldBuoys = 0;
         oldTransmissions = 0;
@@ -31,14 +31,14 @@ public class UIDispacher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(oldBuoys != pTracker.buoysHit)
+        if(oldBuoys != playerState.buoysHit)
         {
-            oldBuoys = pTracker.buoysHit;
+            oldBuoys = playerState.buoysHit;
             CollectedBuoy();
         }
-        if (oldTransmissions != pTracker.transmissionsHit)
+        if (oldTransmissions != playerState.transmissionsHit)
         {
-            oldTransmissions = pTracker.transmissionsHit;
+            oldTransmissions = playerState.transmissionsHit;
             GotTransmission();
         }
     }
