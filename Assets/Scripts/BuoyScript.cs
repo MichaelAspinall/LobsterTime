@@ -33,7 +33,14 @@ public class BuoyScript : MonoBehaviour
     }
     private void SpawnCollectable()
     {
-        GameObject item = GameObject.Instantiate(itemToSpawn, new Vector2(0, 0), Quaternion.identity);
+        GameObject radioCanvas = GameManager.Instance.radioManager;
+        if (!radioCanvas)
+        {
+            Debug.Log("Cannot find radio canvas to spawn collectable");
+            return;
+        }
+
+        GameObject item = GameObject.Instantiate(itemToSpawn, radioCanvas.transform, false);
         Collectable collectable = item.GetComponent<Collectable>();
         if (!collectable)
         {

@@ -49,18 +49,7 @@ public class PlayerMovement : MonoBehaviour
         transform.Rotate(0.0f, 0.0f, -Input.GetAxis("Horizontal") * turnSpeed);
         if (currentSpeed != 0)
         {
-            Vector3 forward = transform.forward;
-            Vector3 up = transform.up;
-            Vector3 right = transform.right;
-            Vector3 vertical = transform.up * Time.deltaTime * currentSpeed;
-            Vector3 horizontal = transform.right * Time.deltaTime * currentSpeed;
-            Vector3 delta = vertical + horizontal;
-
-            Vector3 euler = transform.rotation.eulerAngles;
-            
             transform.position = new Vector3(transform.position.x + transform.up.x * currentSpeed, transform.position.y + transform.up.y * currentSpeed, 0.0f);
-
-            //transform.position += newVector;
         }
 
     }

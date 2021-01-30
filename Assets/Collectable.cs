@@ -33,13 +33,14 @@ public class Collectable : MonoBehaviour
     private Vector2 startingPosition;
     private Vector2 clearingScale;
 
+    public float scaleUpAmount;
+
     // Start is called before the first frame update
     void Start()
     {
         startingScale = transform.localScale;
-        endingScale = transform.localScale * 3;
+        endingScale = transform.localScale * scaleUpAmount;
         clearingScale = transform.localScale * 0.1f;
-        startingPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -63,14 +64,14 @@ public class Collectable : MonoBehaviour
         {
             if (moveTimeElapsed <= moveDurationSeconds)
             {
-                transform.position = Vector2.Lerp(startingPosition, destinationObject.transform.position, moveTimeElapsed / moveDurationSeconds);
+                transform.localPosition = Vector2.Lerp(startingPosition, destinationObject.transform.localPosition, moveTimeElapsed / moveDurationSeconds);
                 transform.localScale = Vector2.Lerp(endingScale, startingScale, moveTimeElapsed / moveDurationSeconds);
                 moveTimeElapsed += Time.deltaTime;
             }
             else
             {
                 movementState = MovementState.HasMoved;
-                transform.position = destinationObject.transform.position;
+                transform.localPosition = destinationObject.transform.localPosition;
                 transform.localScale = startingScale;
             }
         }
@@ -98,6 +99,7 @@ public class Collectable : MonoBehaviour
         {
             if (destinationObject == null)
             {
+                startingPosition = transform.localPosition;
                 movementState = MovementState.IsClearing;
             }
             else
