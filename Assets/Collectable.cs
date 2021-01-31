@@ -16,6 +16,7 @@ public enum MovementState
 public class Collectable : MonoBehaviour
 {
     public GameObject destinationObject;
+    public Sprite shellSprite;
     private MovementState movementState = MovementState.IsGrowing;
 
     private float growTimeElapsed = 0;
@@ -34,6 +35,11 @@ public class Collectable : MonoBehaviour
     private Vector2 clearingScale;
 
     public float scaleUpAmount;
+
+    private void Awake()
+    {
+        GameManager.Instance.collectables.Add(gameObject);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -87,6 +93,7 @@ public class Collectable : MonoBehaviour
             {
                 movementState = MovementState.IsCleared;
                 transform.localScale = Vector2.Lerp(endingScale, clearingScale, 1);
+                GameManager.Instance.collectables.Remove(gameObject);
                 Destroy(gameObject);
             }
         }
@@ -113,6 +120,23 @@ public class Collectable : MonoBehaviour
         {
             PlayerMovement movement = player.GetComponent<PlayerMovement>();
             movement.EnableInput();
+        }
+    }
+
+    public void TransformIntoShell(int range)
+    {
+        float min = range * 0.5f;
+        float max = min + 0.5f;
+        float randomTime = Random.Range(min, max);
+        Invoke("TransformNow", randomTime);
+    }
+
+    private void TransformNow()
+    { 
+        SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
+        if (sprite)
+        {
+            sprite.sprite = shellSprite;
         }
     }
 }
