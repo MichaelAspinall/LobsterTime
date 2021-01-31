@@ -6044,7 +6044,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4840075364232481270, guid: ad23ac2591912e94eb8518cb162f179c, type: 3}
       propertyPath: maxSpeed
-      value: 0.011
+      value: 0.012
       objectReference: {fileID: 0}
     - target: {fileID: -4840075364232481270, guid: ad23ac2591912e94eb8518cb162f179c, type: 3}
       propertyPath: turnSpeed
@@ -6056,7 +6056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4840075364232481270, guid: ad23ac2591912e94eb8518cb162f179c, type: 3}
       propertyPath: decaySpeed
-      value: 0.00005
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 392037607831720072, guid: ad23ac2591912e94eb8518cb162f179c, type: 3}
       propertyPath: m_Sprite
@@ -6076,11 +6076,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 392037607831720073, guid: ad23ac2591912e94eb8518cb162f179c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 127.5
+      value: -12.2
       objectReference: {fileID: 0}
     - target: {fileID: 392037607831720073, guid: ad23ac2591912e94eb8518cb162f179c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.1
+      value: -0.9
       objectReference: {fileID: 0}
     - target: {fileID: 392037607831720073, guid: ad23ac2591912e94eb8518cb162f179c, type: 3}
       propertyPath: m_LocalPosition.z
