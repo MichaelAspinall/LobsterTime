@@ -42,7 +42,6 @@ public class BuoyScript : MonoBehaviour
         PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
         if (player)
         {
-            Debug.Log("Buoy Hit");
             SpawnCollectable();
             GameManager.Instance.HitBuoy(gameObject);
 

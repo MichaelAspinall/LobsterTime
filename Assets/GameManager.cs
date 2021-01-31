@@ -31,7 +31,7 @@ public class GameManager : GenericSingletonClass<GameManager>
         currentBuoy++;
         buoys.Remove(buoy);
 
-        if (currentBuoy == 5)
+        if (currentBuoy == 6)
         {
             TransformCollectables();
         }
@@ -39,7 +39,7 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     public void TransformCollectables()
     {
-        int i = 2;
+        int i = 3;
         foreach (GameObject collectableObject in collectables)
         {
             Collectable collectable = collectableObject.GetComponent<Collectable>();

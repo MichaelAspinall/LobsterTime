@@ -68,10 +68,14 @@ public class Collectable : MonoBehaviour
                 transform.localScale = endingScale;
                 movementState = MovementState.HasGrown;
 
-                if (messageTemplate)
+                if (!messageTemplate)
+                {
+                    Debug.LogWarning("No message template in collectable");
+                }
+                else
                 {
                     GameObject displayMessage = GameObject.Instantiate(messageTemplate, transform, false);
-                    displayMessage.transform.localScale = new Vector3(0.05f, 0.05f, 1.0f);
+                    displayMessage.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                     displayMessage.transform.localPosition = new Vector3(0.0f, -6.0f, -1.0f);
                     displayMessage.GetComponentInChildren<UnityEngine.UI.Text>().text = messageString;
                     messageObject = displayMessage;
@@ -140,7 +144,7 @@ public class Collectable : MonoBehaviour
 
     public void TransformIntoShell(int range)
     {
-        float min = range * 0.5f;
+        float min = range * 1.0f;
         float max = min + 0.5f;
         float randomTime = Random.Range(min, max);
         Invoke("TransformNow", randomTime);
@@ -152,6 +156,10 @@ public class Collectable : MonoBehaviour
         if (sprite)
         {
             sprite.sprite = shellSprite;
+        }
+        else
+        {
+            Debug.LogWarning("No shell sprite in collectable");
         }
     }
 }
