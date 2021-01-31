@@ -63,7 +63,7 @@ public class RadioMessageScript : MonoBehaviour
             newMessage = Instantiate(radioMessageTemplate, transform.position, transform.rotation);
         }
         newMessage.transform.SetParent(GameObject.FindGameObjectWithTag("MainCanvas").transform);
-        newMessage.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        newMessage.transform.localScale = new Vector3(2.0f, 2.0f, 1.0f);
         newMessage.GetComponentInChildren<Text>().text = message;
         if(numMessages > 0)
         {
