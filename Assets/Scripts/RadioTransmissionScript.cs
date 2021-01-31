@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class RadioTransmissionScript : MonoBehaviour
 {
+
+    //Messages and sender need to both be added from the editor
+    //MAKE SURE THESE HAVE THE SAME NUMBER OF ENTRIES
+    public string[] messages;
+    public bool[] messageSender;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +31,11 @@ public class RadioTransmissionScript : MonoBehaviour
         //So we just get rid of the object here
         if (collision.gameObject.tag == "Player")
         {
+            GameObject messageHolder = GameObject.FindGameObjectWithTag("MessageHolder");
+            for (int i = 0; i < messages.Length; i++)
+            {
+                messageHolder.GetComponent<RadioMessageScript>().AddMessage(messageSender[i], messages[i]);
+            }
             Destroy(transform.root.gameObject);
         }
     }

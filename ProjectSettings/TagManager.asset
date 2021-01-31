@@ -7,6 +7,7 @@ TagManager:
   - Buoy
   - Transmission
   - MainCanvas
+  - MessageHolder
   layers:
   - Default
   - TransparentFX
