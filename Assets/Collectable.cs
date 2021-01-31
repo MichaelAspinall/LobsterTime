@@ -75,7 +75,7 @@ public class Collectable : MonoBehaviour
                 else
                 {
                     GameObject displayMessage = GameObject.Instantiate(messageTemplate, transform, false);
-                    displayMessage.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                    displayMessage.transform.localScale = new Vector3(0.1f, 0.1f, 1.0f);
                     displayMessage.transform.localPosition = new Vector3(0.0f, -6.0f, -1.0f);
                     displayMessage.GetComponentInChildren<UnityEngine.UI.Text>().text = messageString;
                     messageObject = displayMessage;
