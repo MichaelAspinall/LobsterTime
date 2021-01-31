@@ -56,6 +56,11 @@ public class Collectable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ClosePopup();
+        }
+
         if (movementState == MovementState.IsGrowing)
         {
             if (growTimeElapsed <= growDurationSeconds)
@@ -119,6 +124,11 @@ public class Collectable : MonoBehaviour
 
     private void OnMouseDown()
     {
+        ClosePopup();
+    }
+
+    private void ClosePopup()
+    {
         if (movementState == MovementState.HasGrown)
         {
             if (destinationObject == null)
@@ -132,14 +142,15 @@ public class Collectable : MonoBehaviour
                 movementState = MovementState.IsMoving;
                 Destroy(messageObject);
             }
+
+            GameObject player = GameManager.Instance.player;
+            if (player)
+            {
+                PlayerMovement movement = player.GetComponent<PlayerMovement>();
+                movement.EnableInput();
+            }
         }
 
-        GameObject player = GameManager.Instance.player;
-        if (player)
-        {
-            PlayerMovement movement = player.GetComponent<PlayerMovement>();
-            movement.EnableInput();
-        }
     }
 
     public void TransformIntoShell(int range)

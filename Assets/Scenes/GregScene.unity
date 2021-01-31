@@ -554,7 +554,6 @@ MonoBehaviour:
   player: {fileID: 2134244238}
   audioSources:
   - {fileID: 156487195}
-  - {fileID: 156487195}
   - {fileID: 1321825091}
   - {fileID: 1037378164}
   - {fileID: 1582240020}
