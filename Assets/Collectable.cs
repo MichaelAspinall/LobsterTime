@@ -16,7 +16,10 @@ public enum MovementState
 public class Collectable : MonoBehaviour
 {
     public GameObject destinationObject;
+    public GameObject messageObject;
     public Sprite shellSprite;
+
+
     private MovementState movementState = MovementState.IsGrowing;
 
     private float growTimeElapsed = 0;
@@ -108,10 +111,12 @@ public class Collectable : MonoBehaviour
             {
                 startingPosition = transform.localPosition;
                 movementState = MovementState.IsClearing;
+                Destroy(messageObject);
             }
             else
             {
                 movementState = MovementState.IsMoving;
+                Destroy(messageObject);
             }
         }
 

@@ -46,19 +46,27 @@ public class BuoyScript : MonoBehaviour
             return;
         }
 
-        GameObject item = GameObject.Instantiate(itemToSpawn, radioCanvas.transform, false);
-        GameObject displayMessage = GameObject.Instantiate(messageTemplate, item.transform, false);
-        displayMessage.transform.localScale = new Vector3(0.05f, 0.05f, 1.0f);
-        displayMessage.transform.localPosition = new Vector3(0.0f, -6.0f, -1.0f);
-        displayMessage.GetComponentInChildren<Text>().text = message;
-        Collectable collectable = item.GetComponent<Collectable>();
-        if (!collectable)
+        if (itemToSpawn)
         {
-            Debug.LogWarning("Buoy is spawning a non-collectable item");
-        }
-        else
-        {
-            collectable.destinationObject = desinationObject;
+            GameObject item = GameObject.Instantiate(itemToSpawn, radioCanvas.transform, false);
+            Collectable collectable = item.GetComponent<Collectable>();
+            if (!collectable)
+            {
+                Debug.LogWarning("Buoy is spawning a non-collectable item");
+            }
+            else
+            {
+                collectable.destinationObject = desinationObject;
+
+                if (messageTemplate)
+                {
+                    GameObject displayMessage = GameObject.Instantiate(messageTemplate, item.transform, false);
+                    displayMessage.transform.localScale = new Vector3(0.05f, 0.05f, 1.0f);
+                    displayMessage.transform.localPosition = new Vector3(0.0f, -6.0f, -1.0f);
+                    displayMessage.GetComponentInChildren<Text>().text = message;
+                    collectable.messageObject = displayMessage;
+                }
+            }
         }
     }
 }
