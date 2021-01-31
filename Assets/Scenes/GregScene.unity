@@ -649,7 +649,7 @@ PrefabInstance:
     - target: {fileID: 8365682550718845435, guid: 1292a7628a25a2143916f516acab26f7, type: 3}
       propertyPath: messageTemplate
       value: 
-      objectReference: {fileID: 8727701274438532586, guid: dbe9a86aede23ad45868147d32b9442c, type: 3}
+      objectReference: {fileID: 6063342936486719684, guid: b705b1b7eaa4d254484669eb83cc7620, type: 3}
     - target: {fileID: 8365682550718845435, guid: 1292a7628a25a2143916f516acab26f7, type: 3}
       propertyPath: desinationObject
       value: 
