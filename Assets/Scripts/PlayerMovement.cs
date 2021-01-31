@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     //setting variables to public makes them visible in the editor, that is where speed gets set
-    private float currentSpeed;
+    private float currentSpeed = 0.0f;
     public float maxSpeed = 0.01f;
     public float accelSpeed;
     public float decaySpeed;
