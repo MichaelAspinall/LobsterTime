@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         transform.Rotate(0.0f, 0.0f, -Input.GetAxis("Horizontal") * turnSpeed);
         if (currentSpeed != 0)
         {
-            transform.position = new Vector3(transform.position.x + transform.up.x * currentSpeed, transform.position.y + transform.up.y * currentSpeed, 0.0f);
+            transform.position = new Vector3(transform.position.x + transform.up.x * currentSpeed * Time.deltaTime, transform.position.y + transform.up.y * currentSpeed * Time.deltaTime, 0.0f);
         }
 
     }
