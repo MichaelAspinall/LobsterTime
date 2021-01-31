@@ -6,11 +6,24 @@ using UnityEngine.UI;
 
 public class BuoyScript : MonoBehaviour
 {
+    public static Dictionary<string, string> dialogues = new Dictionary<string, string>()
+    {
+        {"Radio", "Good morning, it’s 7:45am...a cold and sunny day today with a high of 27 degrees..." },
+        {"Intro", "Been up since 3am - the witching hour - odd things occur...but it’s daytime that worries me today."},
+        {"Lobster1", "Fishing keeps me sane on days like this..."},
+        {"Lunchbox", "No way...my lunch box! Knocked it overboard last week...can’t believe last time I saw Greg was at Maria’s Subs...he got steak & cheese."},
+        {"Lobster2", "I always knew I wanted to make a living as a fisherman...and it’s good money if you work hard" },
+        {"Whiskey", "Smells just like that cheap whiskey we’d steal and drink in school...he always went too hard. I’ll make a toast to a friend lost too soon!"},
+        {"Tape", "It can’t be my tape! Greg missed that show and borrowed my bootleg the next day. I never asked him why he didn’t make it...he was struggling already."},
+        {"Lobster3", "I’ve got to ride out the storm of these last couple days... "},
+        {"Ending", "Tim, are you there? Come back to shore...we need you here. It’s time to say goodbye." }
+    };
+
     public int buoyNumber;
     public GameObject itemToSpawn;
     public GameObject desinationObject;
     public GameObject messageTemplate;
-    public string message;
+    public string messageName;
 
     // Start is called before the first frame update
     void Start()
@@ -57,15 +70,15 @@ public class BuoyScript : MonoBehaviour
             else
             {
                 collectable.destinationObject = desinationObject;
+                collectable.messageTemplate = messageTemplate;
 
-                if (messageTemplate)
+                string message = dialogues[messageName];
+                if (message.Length == 0)
                 {
-                    GameObject displayMessage = GameObject.Instantiate(messageTemplate, item.transform, false);
-                    displayMessage.transform.localScale = new Vector3(0.05f, 0.05f, 1.0f);
-                    displayMessage.transform.localPosition = new Vector3(0.0f, -6.0f, -1.0f);
-                    displayMessage.GetComponentInChildren<Text>().text = message;
-                    collectable.messageObject = displayMessage;
+                    message = "Invalid Message: " + messageName;
                 }
+
+                collectable.messageString = message;
             }
         }
     }

@@ -16,10 +16,11 @@ public enum MovementState
 public class Collectable : MonoBehaviour
 {
     public GameObject destinationObject;
-    public GameObject messageObject;
+    public GameObject messageTemplate;
+    public string messageString;
     public Sprite shellSprite;
 
-
+    private GameObject messageObject;
     private MovementState movementState = MovementState.IsGrowing;
 
     private float growTimeElapsed = 0;
@@ -66,6 +67,15 @@ public class Collectable : MonoBehaviour
             {
                 transform.localScale = endingScale;
                 movementState = MovementState.HasGrown;
+
+                if (messageTemplate)
+                {
+                    GameObject displayMessage = GameObject.Instantiate(messageTemplate, transform, false);
+                    displayMessage.transform.localScale = new Vector3(0.05f, 0.05f, 1.0f);
+                    displayMessage.transform.localPosition = new Vector3(0.0f, -6.0f, -1.0f);
+                    displayMessage.GetComponentInChildren<UnityEngine.UI.Text>().text = messageString;
+                    messageObject = displayMessage;
+                }
             }
         }
 
