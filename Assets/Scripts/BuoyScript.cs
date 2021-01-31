@@ -23,12 +23,14 @@ public class BuoyScript : MonoBehaviour
     //2D collision handeler
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        PlayerState player = collision.gameObject.GetComponent<PlayerState>();
+        PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
         if (player)
         {
             Debug.Log("Buoy Hit");
             SpawnCollectable();
             GameManager.Instance.HitBuoy(gameObject);
+
+            player.DisableInput();
             Destroy(transform.root.gameObject);
         }
     }

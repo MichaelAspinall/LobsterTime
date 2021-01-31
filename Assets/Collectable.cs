@@ -107,5 +107,12 @@ public class Collectable : MonoBehaviour
                 movementState = MovementState.IsMoving;
             }
         }
+
+        GameObject player = GameManager.Instance.player;
+        if (player)
+        {
+            PlayerMovement movement = player.GetComponent<PlayerMovement>();
+            movement.EnableInput();
+        }
     }
 }

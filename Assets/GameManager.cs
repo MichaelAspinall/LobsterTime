@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : GenericSingletonClass<GameManager>
 {
     public GameObject radioManager;
+    public GameObject player;
 
     int currentBuoy = 0;
     public List<GameObject> buoys;
