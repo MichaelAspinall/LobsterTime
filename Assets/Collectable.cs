@@ -71,8 +71,8 @@ public class Collectable : MonoBehaviour
             else
             {
                 movementState = MovementState.HasMoved;
-                transform.localPosition = destinationObject.transform.localPosition;
-                transform.localScale = startingScale;
+                transform.localPosition = Vector2.Lerp(startingPosition, destinationObject.transform.localPosition, 1);
+                transform.localScale = Vector2.Lerp(endingScale, startingScale, 1);
             }
         }
 
@@ -86,7 +86,7 @@ public class Collectable : MonoBehaviour
             else
             {
                 movementState = MovementState.IsCleared;
-                transform.localScale = clearingScale;
+                transform.localScale = Vector2.Lerp(endingScale, clearingScale, 1);
                 Destroy(gameObject);
             }
         }
