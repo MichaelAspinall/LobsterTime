@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     public float turnSpeed;
 
+    private bool isInputDisabled;
+
     //player GameObject also set in editor
 
     // Start is called before the first frame update
@@ -28,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float forwardInput = Input.GetAxis("Vertical");
-        if (forwardInput == 0 && currentSpeed != 0)
+        if ((forwardInput == 0 && currentSpeed != 0) || isInputDisabled)
         {
             float decay = Mathf.Min(decaySpeed, Mathf.Abs(currentSpeed));
             currentSpeed = Mathf.Sign(currentSpeed) * (Mathf.Abs(currentSpeed) - decay);
@@ -50,5 +52,15 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector3(transform.position.x + transform.up.x * currentSpeed, transform.position.y + transform.up.y * currentSpeed, 0.0f);
         }
 
+    }
+
+    public void DisableInput()
+    {
+        isInputDisabled = true;
+    }
+
+    public void EnableInput()
+    {
+        isInputDisabled = false;
     }
 }
