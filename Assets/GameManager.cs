@@ -8,6 +8,8 @@ public class GameManager : GenericSingletonClass<GameManager>
     public GameObject radioManager;
     public GameObject player;
 
+    public AudioSource[] audioSources;
+
     int currentBuoy = 0;
     public List<GameObject> buoys;
 
@@ -28,6 +30,15 @@ public class GameManager : GenericSingletonClass<GameManager>
 
     public void HitBuoy(GameObject buoy)
     {
+        if (currentBuoy > 0)
+        {
+            audioSources[currentBuoy - 1].Stop();
+        }
+        if (currentBuoy < audioSources.Length)
+        {
+            audioSources[currentBuoy].Play();
+        }
+
         currentBuoy++;
         buoys.Remove(buoy);
 
